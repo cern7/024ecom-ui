@@ -53,7 +53,7 @@ export const SignInForm = () => {
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 disabled:opacity-50"
           disabled={isLoading}
         >
-            {isLoading ? 'Signin in...' : 'Sign In'}
+          {isLoading ? "Signin in..." : "Sign In"}
         </button>
       </form>
     </div>

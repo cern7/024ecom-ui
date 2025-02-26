@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { api } from "@/utils/api";
 import { AxiosError } from "axios";
+import { User, SignInData, SignUpData } from "@/types/auth";
 
 interface AuthState {
   user: User | null;
@@ -64,6 +65,6 @@ export const useAuth = create<AuthState>((set) => ({
     localStorage.removeItem('token');
     set({user: null});
   },
-  
+
   clearError: () => set({ error: null }),
 }));

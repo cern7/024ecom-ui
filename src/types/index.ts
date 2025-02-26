@@ -1,30 +1,38 @@
 export interface Product {
-    id: number;
-    name: string;
-    description: string;
-    price: number;
-    images: string[];
-    category: string;
-    inStock: boolean;
-    rating: number;
-    reviewCount: number;
-    createdAt: string;
-    updatedAt: string;
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  images: string[];
+  category: string;
+  inStock: boolean;
+  rating: number;
+  reviewCount: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface CartItem {
-    id: number;
-    productId: number;
-    product: Product;
-    quantity: number;
+  id: number;
+  productId: number;
+  product: Product;
+  quantity: number;
 }
 
+export interface Cart {
+  items: CartItem[];
+  totalItems: number;
+  subtotal: number;
+  shipping: number;
+  tax: number;
+  total: number;
+}
 export interface Review {
-    id: number;
-    productId: number;
-    userId: number;
-    rating: number;
-    comment: string;
-    userName: string;
-    createdAt: string;
+  id: number;
+  productId: number;
+  userId: number;
+  rating: number;
+  comment: string;
+  userName: string;
+  createdAt: string;
 }

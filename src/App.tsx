@@ -14,6 +14,7 @@ import { getCurrentUser } from "./features/auth/authSlice";
 // Layouts
 import MainLayout from "./components/layout/MainLayout";
 import AuthLayout from "./components/layout/AuthLayout";
+import ProductPage from "./pages/products/[id]";
 
 // Pages
 // import HomePage from './pages/HomePage';
@@ -36,3 +37,65 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   }
   return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
 };
+
+const AppContent = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
+  return (
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/products" element={<ProductPage />} />
+        <Route path="/products/:id" element={<ProductDetailedPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <CheckoutPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="orders"
+          element={
+            <PrivateRoute>
+              <OrdersPage />
+            </PrivateRoute>
+          }
+        />
+      </Route>
+
+      <Route path="/" element={<AuthLayout />}>
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+      </Route>
+
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  );
+};
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Router>
+        <AppContent />
+      </Router>
+    </Provider>
+  );
+};
+
+export default App;

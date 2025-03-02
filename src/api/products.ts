@@ -1,11 +1,11 @@
 import apiClient from "./client.";
-import { Product /*ProductFilter*/ } from "@/types";
+import { Product, ProductFilter } from "@/types";
 
 export const productApi = {
-//   getProducts: async (filters?: ProductFilter) => {
-//     const response = await apiClient.get("/products", { params: filters });
-//     return response.data;
-//   },
+  getProducts: async (filters?: ProductFilter) => {
+    const response = await apiClient.get("/products", { params: filters });
+    return response.data;
+  },
 
   getProduct: async (id: number) => {
     const response = await apiClient.get(`/products/${id}`);

@@ -30,6 +30,11 @@ export const Button = ({
       className={`${baseClasses} ${variantClasses[variant]} ${className}`}
       disabled={isLoading || rest.disabled}
       {...rest}
-    ></button>
+    >
+        {isLoading ? (
+            <>
+            </>
+        )}
+    </button>
   );
 };

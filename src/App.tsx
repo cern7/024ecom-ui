@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useAuthEffect } from "./useAuthEffect";
 import {
   BrowserRouter as Router,
   Routes,
@@ -39,11 +40,7 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
 };
 
 const AppContent = () => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getCurrentUser());
-  }, [dispatch]);
+  useAuthEffect();
 
   return (
     <Routes>

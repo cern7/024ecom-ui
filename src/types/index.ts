@@ -1,3 +1,5 @@
+import { LargeNumberLike } from "crypto";
+
 export interface Product {
   id: number;
   name: string;
@@ -10,6 +12,15 @@ export interface Product {
   reviewCount: number;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface ProductFilter{
+    category?: string;
+    minPrice?: number;
+    maxPrice?: number;
+    sort?: 'name_asc'|'name_desc'| 'price_asc' |'price_desc'| 'newest';
+    page?: number;
+    limit?: number;
 }
 
 export interface CartItem {

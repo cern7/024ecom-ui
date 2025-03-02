@@ -1,13 +1,9 @@
-import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-// import {fetchCart} from "@/features/cart/cartSlice"
+import { useCartEffect } from "@/useCartEffect";
+
 
 const MainLayout = () => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
+  useCartEffect();
 
   return (
     <div className="min-h-screen flex flex-col">

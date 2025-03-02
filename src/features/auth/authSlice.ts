@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { authApi } from "@/api/auth";
 import { AuthState, SignInData, SignUpData } from "@/types/auth";
+import { getFromLocalStorage } from "@/getFromLocalStorage";
 
 const initialState: AuthState = {
   user: null,
-  token: localStorage.getItem("auth_token"),
-  isAuthenticated: !!localStorage.getItem("auth_token"),
+  token: getFromLocalStorage("auth_token"),
+  isAuthenticated: !!getFromLocalStorage("auth_token"),
   isLoading: false,
   error: null,
 };
@@ -47,7 +48,7 @@ export const logout = createAsyncThunk(
 );
 
 export const getCurrentUser = createAsyncThunk(
-  "auth/logout",
+  "auth/getCurrentUser",
   async (_, { rejectWithValue }) => {
     try {
       return await authApi.getCurrentUser();
@@ -100,6 +101,12 @@ const authSlice = createSlice({
       // Logout
       .addCase(logout.pending, (state) => {
         state.isLoading = true;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isAuthenticated = false;
+        state.user = null;
+        state.token = null;
       })
       .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;

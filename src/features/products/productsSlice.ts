@@ -1,6 +1,8 @@
 import { productApi } from "@/api/products";
-import { Product } from "@/types";
+import { Product, ProductFilter } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+
 interface ProductsState {
   products: Product[];
   currentProduct: Product | null;
@@ -28,7 +30,7 @@ export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (filters: ProductFilter = {}, { rejectWithValue }) => {
     try {
-      return await productApi.getProduct(filters);
+      return await productApi.getProducts(filters);
     } catch (error: any) {
       return rejectWithValue(
         error.response?.data?.message || "Failed to fetch products"
@@ -104,7 +106,7 @@ const productsSlice = createSlice({
         state.isLoading = false;
         state.currentProduct = action.payload;
       })
-      .addCase(fetchProducts.rejected, (state, action) => {
+      .addCase(fetchProductById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
       })
@@ -119,7 +121,7 @@ const productsSlice = createSlice({
         state.totalCount = action.payload.totalCount;
         state.pageCount = action.payload.pageCount;
       })
-      .addCase(fetchProducts.rejected, (state, action) => {
+      .addCase(searchProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
       });

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Product } from "@/types";
+import { Product } from "@/types/product";
 import  ProductCard from "@/features/products/ProductCard"; 
 import axios from "axios";
 

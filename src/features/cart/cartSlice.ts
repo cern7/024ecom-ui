@@ -1,5 +1,5 @@
 import { cartApi } from "@/api/cart";
-import { Cart } from "@/types";
+import { Cart } from "@/types/product";
 import {
   createAsyncThunk,
   createSlice,

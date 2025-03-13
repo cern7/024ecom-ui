@@ -1,5 +1,5 @@
 import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { Product } from "@/types";
+import { Product } from "@/types/product";
 import React from "react";
 import { addItemToCart } from "../cart/cartSlice";
 import { Link } from "react-router-dom";

@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { CartItem, Product } from "@/types";
+import { CartItem, Product } from "@/types/product";
 import axios from "axios";
 
 export const useCart = () => {

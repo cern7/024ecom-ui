@@ -1,5 +1,5 @@
 import apiClient from "./client.";
-import { Product, ProductFilter } from "@/types";
+import { Product, ProductFilter } from "@/types/product";
 
 export const productApi = {
   getProducts: async (filters?: ProductFilter) => {

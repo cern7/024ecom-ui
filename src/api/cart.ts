@@ -1,5 +1,5 @@
 import apiClient from "./client.";
-import { CartItem, Cart } from "@/types";
+import { CartItem, Cart } from "@/types/product";
 // TODO
 // implement all these api in backend
 export const cartApi = {

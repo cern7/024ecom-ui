@@ -1,5 +1,5 @@
 import { productApi } from "@/api/products";
-import { Product, ProductFilter } from "@/types";
+import { Product, ProductFilter } from "@/types/product";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 

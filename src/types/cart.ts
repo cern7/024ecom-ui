@@ -1,4 +1,4 @@
-import { string } from "zod";
+import { Product } from "./product";
 
 export interface CartItemAttributes {
   quantity: number;
@@ -42,7 +42,7 @@ export interface CartResource {
   attributes: CartAttributes;
   relationships: CartRelationShips;
 }
-import { Product } from "./product";
+
 export interface CartResponse {
   data: CartResource;
   included: Array<CartItemResource | Product>;

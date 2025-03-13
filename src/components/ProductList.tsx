@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Product } from "@/types";
-import { ProductCard } from "./ProductCard";
+import  ProductCard from "@/features/products/ProductCard"; 
 import axios from "axios";
 
 export const ProductList = () => {

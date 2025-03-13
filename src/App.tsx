@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { useAuthEffect } from "./useAuthEffect";
 import {
@@ -15,10 +16,10 @@ import { getCurrentUser } from "./features/auth/authSlice";
 // Layouts
 import MainLayout from "./components/layout/MainLayout";
 import AuthLayout from "./components/layout/AuthLayout";
-import ProductPage from "./pages/products/[id]";
+// import ProductPage from "./pages/products/[id]";
 
 // Pages
-// import HomePage from './pages/HomePage';
+import HomePage from './pages/HomePage';
 // import ProductsPage from './pages/ProductsPage';
 // import ProductDetailPage from './pages/ProductDetailPage';
 // import CartPage from './pages/CartPage';
@@ -46,7 +47,7 @@ const AppContent = () => {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="/products" element={<ProductPage />} />
+        {/* <Route path="/products" element={<ProductPage />} />
         <Route path="/products/:id" element={<ProductDetailedPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route
@@ -72,15 +73,15 @@ const AppContent = () => {
               <OrdersPage />
             </PrivateRoute>
           }
-        />
+        /> */}
       </Route>
 
       <Route path="/" element={<AuthLayout />}>
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
+        {/* <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} /> */}
       </Route>
 
-      <Route path="*" element={<NotFoundPage />} />
+      {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>
   );
 };

@@ -31,10 +31,7 @@ export const Button = ({
       disabled={isLoading || rest.disabled}
       {...rest}
     >
-        {isLoading ? (
-            <>
-            </>
-        )}
+      {isLoading ? <></> : <></>}
     </button>
   );
 };

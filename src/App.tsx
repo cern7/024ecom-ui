@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import { useAppDispatch } from "./hooks/useAppDispatch";
 import { useAppSelector } from "./hooks/useAppSelector";
-import { getCurrentUser } from "./features/auth/authSlice";
+import { getCurrentUser } from "./store/slices/authSlice";
 
 // Layouts
 import MainLayout from "./components/layout/MainLayout";

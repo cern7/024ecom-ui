@@ -1,7 +1,7 @@
 import { Button } from "@/components/common/Button";
 import MainLayout from "@/components/layout/MainLayout";
 import { ProductList } from "@/components/ProductList";
-import { fetchProducts } from "@/features/products/productsSlice";
+import { fetchProducts } from "@/store/slices/productsSlice";
 import { AppDispatch, RootState } from "@/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";

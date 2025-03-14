@@ -1,7 +1,7 @@
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { searchProducts } from "@/features/products/productsSlice";
+import { searchProducts } from "@/store/slices/productsSlice";
 import { Button } from "@/components/common/Button";
 import ProductFilter from "@/features/products/ProductFilter";
 import ProductGrid from "@/features/products/ProductGrid";

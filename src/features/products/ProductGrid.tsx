@@ -1,7 +1,7 @@
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { useEffect } from "react";
-import { fetchProducts } from "./productsSlice";
+import { fetchProducts } from "../../store/slices/productsSlice";
 import { Button } from "@/components/common/Button";
 import ProductCard from "./ProductCard";
 

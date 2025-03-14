@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { z } from "zod";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { fetchProducts, setFilters } from "./productsSlice";
+import { fetchProducts, setFilters } from "../../store/slices/productsSlice";
 import { ProductFilter as ProductFilterType } from "@/types/product";
 import { Button } from "@/components/common/Button";
 import {Input} from '../../components/common/Input';

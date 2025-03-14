@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useAppDispatch } from "./hooks/useAppDispatch";
-import { fetchCart } from "@/features/cart/cartSlice";
+import { fetchCart } from "@/store/slices/cartSlice";
 
 /**
  * Custom hood to fetch the current user on application initialization

@@ -1,32 +1,44 @@
-import apiClient from "./client.";
-import { SignUpData, SignInData, User } from "@/types/auth";
+import apiClient, { removeAuthToken, setAuthToken } from "./client.";
+import {
+  SignUpData,
+  SignInData,
+  AuthResponse,
+  ChangePasswordRequest,
+  User,
+} from "@/types/auth";
 
-export const authApi = {
-  login: async (credentials: SignInData) => {
-    const response = await apiClient.post("/auth/sing_in", credentials);
-    localStorage.setItem("auth_token", response.data.token);
+export const register = async (data: SignUpData): Promise<AuthResponse> => {
+  const response = await apiClient.post<AuthResponse>("/auth/sign_up", data);
+  setAuthToken(response.data.token);
+  return response.data;
+};
+
+export const login = async (data: SignInData): Promise<AuthResponse> => {
+  const response = await apiClient.post<AuthResponse>("/auth/sign_in", data);
+  setAuthToken(response.data.token);
+  return response.data;
+};
+
+export const logout = async (): Promise<void> => {
+  await apiClient.delete("auth/logout");
+  removeAuthToken();
+};
+
+export const changePassword = async (
+  data: ChangePasswordRequest
+): Promise<{ message: string }> => {
+  const response = await apiClient.put<{ message: string }>(
+    "auht/change_password",
+    data
+  );
+  return response.data;
+};
+
+export const getCurrentUser = async (): Promise<User | null> => {
+  try {
+    const response = await apiClient.get<{ user: User }>("/auth/me");
     return response.data.user;
-  },
-
-  register: async (userData: SignUpData) => {
-    const response = await apiClient.post("/auth/sing_up", userData);
-    // TODO
-    // add email confirmation, remove token from this step
-    localStorage.setItem("auth_token", response.data.token);
-    return response.data.user;
-  },
-
-  logout: async () => {
-    // TODO
-    // implement this controller API
-    await apiClient.post("/auth/logout");
-    localStorage.removeItem("auth_token");
-  },
-
-  getCurrentUser: async () => {
-    // TODO
-    // implement this controller API
-    const response = await apiClient.get("/auth/me");
-    return response.data;
-  },
+  } catch (error) {
+    return null;
+  }
 };

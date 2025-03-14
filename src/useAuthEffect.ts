@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useAppDispatch } from "./hooks/useAppDispatch";
-import { getCurrentUser } from "./features/auth/authSlice";
+import { getCurrentUser } from "./store/slices/authSlice";
 
 /**
  * Custom hood to fetch the current user on application initialization
